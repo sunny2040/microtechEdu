@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-Tech Institute Of Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="path/to/owl.carousel.min.css">
+    <link rel="stylesheet" href="path/to/owl.theme.default.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-5s/SeZWsQ3MTZt+s1KUdfp0fCoZ2B0a5W3txdSzv4z4K9/x+QI5cJ+6S/N8N7WcxUDZX5jHjC4dF/lzT3K6N7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Additional CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+        .course-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Larger shadow on hover */
+        }
+        .course-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%; /* Circular format */
+            margin: 0 auto 10px; /* Center image and add bottom margin */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Light shadow for image */
+        }
+        .course-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333; /* Dark text color */
+        }
+        .course-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666; /* Slightly lighter text color */
+        }
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns grid */
+            gap: 20px; /* Spacing between cards */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .courses-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+        @media (max-width: 1200px) {
+            .courses-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+            }
+        }
+        @media (max-width: 900px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on even smaller screens */
+            }
+        }
+        @media (max-width: 600px) {
+            .courses-container {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
+            .course-card {
+                padding: 15px;
+            }
+            .course-card img {
+                width: 50px;
+                height: 50px;
+            }
+            .course-card h3 {
+                font-size: 14px;
+            }
+            .course-card p {
+                font-size: 12px;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color, adjust as needed */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Space between cards and button */
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        /* Counter Section Styles */
+        .counter-section {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 200px; /* Adjust card width */
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .counter-item h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .counter-item p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+
+        .counter-item i {
+            margin-left: 5px; /* Adjust spacing between count and icon */
+            color: #007bff; /* Adjust icon color */
+        }
+
+        /* Image Styles */
+        .image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            max-height: 300px; /* Set a maximum height if needed */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 30px 0;
+        }
+        .footer h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        address {
+            color: #ffffff;
+            font-style: normal;
+            line-height: 1.6;
+        }
+    </style>
+    <style>
+        /* Additional CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+        .course-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .course-info .content {
+            flex-basis: 60%;
+            max-width: 60%;
+        }
+        .course-info .image {
+            flex-basis: 30%;
+            max-width: 30%;
+            margin-left: auto;
+        }
+        .course-info img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .course-table {
+            margin-top: 20px;
+        }
+        .course-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .course-table th, .course-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .course-table th {
+            background-color: #f2f2f2;
+        }
+        .courses-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Sub-Nav Container -->
+        <div class="header-top">
+            <nav class="sub-nav-container">
+                <ul class="sub-nav">
+                    <li class="call-us">
+                        <img src="images/call-icon.png" alt="Call Icon" id="call-icon"> <!-- Replace with your call icon path -->
+                        <a href="tel:+9472650244">Call Us: 9472650244</a>
+                    </li>
+                    <div class="right-links">
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Online Verification</a></li>
+                        <li><a href="#">Branch Login</a></li>
+                        <li><a href="#">Branch Enquiry</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- Logo and Main Navigation Container -->
+        <div class="header-main">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/658e88cbd90fb.jpg" alt="Micro-Tech Institute Of Education Logo" id="logo">
+            </a>
+            <nav class="main-nav-container">
+                <ul class="main-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="course.html">COURSES</a></li>
+                    <li><a href="#">STUDENT ZONE</a></li>
+                    <li><a href="#">MEDIA</a></li>
+                    <li><a href="#">FRANCHISE</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="slider">
+            <img src="images/658e88ff24874.jpg" class="slide active" alt="Slide 1">
+        </div>
+        
+        <!-- Course Categories Section -->
+        <section class="ftco-section bg-light-blue courses-section">
+            <div class="container">
+                <div class="course-info">
+                    <div class="content">
+                        <h2>ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY</h2>
+                        <p>A Advance Diploma In Information Technology (ADIT) as well as (DCA+CFA+DCP=ADIT)</p>
+                        
+                        <h3>STUDY OPTIONS</h3>
+                        <div class="course-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Course Name</th>
+                                        <th>COURSE CODE</th>
+                                        <th>MIN. QUAL.</th>
+                                        <th>DURATION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ADIT</td>
+                                        <td>MT06</td>
+                                        <td>10th Pass</td>
+                                        <td>12 months</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ADIT</td>
+                                        <td>MT14</td>
+                                        <td>10+2th</td>
+                                        <td>12 months</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="images/dca.jpg" alt="Certificate Image">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>INFORMATION</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>STUDENT HELP</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>LOCATION</h3>
+                    <address>
+                        Address: Micro-Tech Institute Of Education Pvt. Ltd., Saraiya, Vill-Bakhra Po-Bakhra P/S Saraiya, Muzaffarpur - 843101<br>
+                        Phone: <a href="tel:+919472650244">9472650244</a><br>
+                        Phone: <a href="tel:+919472400672">9472400672</a><br>
+                        Email: <a href="mailto:info@microtechedu.com">info@microtechedu.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/owl.carousel.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

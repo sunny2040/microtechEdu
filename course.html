@@ -37,11 +37,11 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Larger shadow on hover */
         }
         .course-card img {
-            width: 70px;
-            height: 70px;
+            width: 200px;
+            height: 100px;
             object-fit: cover;
-            border-radius: 50%; /* Circular format */
-            margin: 0 auto 10px; /* Center image and add bottom margin */
+            border-radius: 100%; /* Circular format */
+            margin: 0 auto 40px; /* Center image and add bottom margin */
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Light shadow for image */
         }
         .course-card h3 {
@@ -282,6 +282,42 @@
         line-height: 1.6;
     }
 </style>
+
+<style>
+    /* Centering the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+/* Adjusting size of select box */
+#course-select {
+    width: 700px; /* Adjust width as needed */
+    height: 30px; /* Adjust height as needed */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-right: 10px; /* Spacing between select and button */
+}
+
+/* Styling the search button */
+#search-button {
+    padding: 8px 16px; /* Adjust padding as needed */
+    font-size: 14px; /* Adjust font size as needed */
+    background-color: #007bff; /* Blue color, adjust as needed */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+</style>
+
     
 </head>
 <body>
@@ -324,15 +360,14 @@
     </header>
     <main>
         <div class="slider">
-            <img src="images/658e8b4a5f859.jpg" class="slide active" alt="Slide 1">
-            <img src="images/658e8f6fa41cc.jpg" class="slide" alt="Slide 2">
+            <img src="images/658e88ff24874.jpg" class="slide active" alt="Slide 1">
         </div>
         <!-- Categories Section -->
         <section class="categories">
             <div class="marquee-container">
                 <marquee behavior="scroll" scrollamount="5" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
                     <div class="category-item">
-                        <a href="index.html">Welcome To Micro-Tech Institute Of Education  | </a>
+                        <a href="#">Welcome To Micro-Tech Institute Of Education  | </a>
                     </div>
                     <div class="category-item">
                         <a href="#">All Centre Are Requested Start New Student Admission for Session 2023-2024  |</a>
@@ -343,7 +378,21 @@
                 </marquee>
             </div>
         </section>
-        
+
+        <!-- Course Selection Dropdown -->
+        <div class="search-container">
+            <select id="course-select">
+                <option value="">Select Course</option>
+                <option value="Certificate in Computer Application">Certificate in Computer Application</option>
+                <option value="Diploma in Computer Application">Diploma in Computer Application</option>
+                <option value="Certificate in Financial Accounting">Certificate in Financial Accounting</option>
+                <option value="Diploma in Desktop Publishing">Diploma in Desktop Publishing</option>
+                <option value="Diploma in Office Automation">Diploma in Office Automation</option>
+                <option value="Advance Diploma in Information Technology">Advance Diploma in Information Technology</option>
+            </select>
+            <button id="search-button">Search Course</button>
+        </div>
+
         <!-- Course Categories Section -->
         <section class="ftco-section bg-light-blue courses-section">
             <div class="container">
@@ -370,75 +419,61 @@
                         </a>
                         <h3><a href="cfa.html">Certificate in Financial Accounting</a></h3>
                     </div>
-                </div>
-                <div class="text-center mt-4">
-                    <a href="course.html" class="btn btn-primary">View Course Categories</a>
-                </div>
-            </div>
-        </section>
-        
-        
-        <!-- Counter Section -->
-        <section class="counter-section">
-            <div class="container">
-                <h2 class="section-title">VISITORS STATISTICS</h2>
-                <div class="form">
-                    <!-- Counter 1: OUR VISITORS -->
-                    <div class="counter-item">
-                        <h2><span id="visitors-count" data-target="100">0</span> <i class="fas fa-users"></i></h2>
-                        <p>OUR VISITORS</p>
+                    <!-- Course 4: DIPLOMA IN DESKTOP PUBLISHING -->
+                    <div class="course-card">
+                        <a href="dtp.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/dtp.jpg" alt="Diploma in Desktop Publishing">
+                        </a>
+                        <h3><a href="dtp.html">Diploma in Desktop Publishing</a></h3>
                     </div>
-                    <!-- Counter 2: OUR COURSES -->
-                    <div class="counter-item">
-                        <h2><span id="courses-count" data-target="10">0</span></h2>
-                        <p>OUR COURSES</p>
+                    <!-- Course 5: DIPLOMA IN OFFICE AUTOMATION -->
+                    <div class="course-card">
+                        <a href="ccoa.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/ccoa.jpg" alt="Diploma in Desktop Publishing">
+                        </a>
+                        <h3><a href="ccoa.html">Diploma in Desktop Publishing</a></h3>
                     </div>
-                    <!-- Counter 3: STUDENTS ENROLLED -->
-                    <div class="counter-item">
-                        <h2><span id="students-count" data-target="500">0</span></h2>
-                        <p>STUDENTS ENROLLED</p>
-                    </div>
-                    <!-- Counter 4: PERCENT CERTIFIED STUDENTS -->
-                    <div class="counter-item">
-                        <h2><span id="certified-count" data-target="85">0</span>%</h2>
-                        <p>PERCENT CERTIFIED STUDENTS</p>
+                    <!-- Course 6: ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY -->
+                    <div class="course-card">
+                        <a href="adit.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/adcs.jpg" alt="Diploma in Desktop Publishing">
+                        </a>
+                        <h3><a href="adit.html">Diploma in Desktop Publishing</a></h3>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="ftco-section bg-yellow courses-section">
-            <div class="container">
-                <h2 class="mb-4">BOARD OF ADVISORY MEMBER</h2>
-                <div class="courses-container">
-                    <div class="course-card">
-                        <a href="#" class="img d-flex align-items-center justify-content-center">
-                            <img src="images/sandhya.jpeg" alt="Sandhya Kumar">
-                        </a>
-                        <h3><a href="#">SANDHYA KUMARI</a></h3>
-                        <p>MANAGING DIRECTOR</p>
-                    </div>
-                    <div class="course-card">
-                        <a href="#" class="img d-flex align-items-center justify-content-center">
-                            <img src="images/amit.jpg" alt="Amit Kumar">
-                        </a>
-                        <h3><a href="#">AMIT KUMAR</a></h3>
-                        <p>ACCOUNTS & SALES</p>
-                    </div>
-                    <div class="course-card">
-                        <a href="#" class="img d-flex align-items-center justify-content-center">
-                            <img src="images/rohit.jpg" alt="Rohit Kumar">
-                        </a>
-                        <h3><a href="#">ROHIT KUMAR</a></h3>
-                        <p>COM. TEACHER</p>
-                    </div>
-                </div>
-                <div class="text-center mt-4">
-                    <a href="#" class="btn btn-primary">VIEW ALL ADVISORY MEMBER</a>
-                </div>
-            </div>
-        </section>
-        
+        <script>
+            document.getElementById('search-button').addEventListener('click', function() {
+    var selectedCourse = document.getElementById('course-select').value;
+    if (selectedCourse) {
+        // Redirect to the selected course page or perform other actions
+        switch (selectedCourse) {
+            case "Certificate in Computer Application":
+                window.location.href = "cca.html";
+                break;
+            case "Diploma in Computer Application":
+                window.location.href = "dca.html";
+                break;
+            case "Certificate in Financial Accounting":
+                window.location.href = "cfa.html";
+                break;
+            case "Diploma in Desktop Publishing":
+                window.location.href = "dtp.html";
+                break;
+            case "Diploma in Office Automation":
+                window.location.href = "ccoa.html";
+                break;
+            case "Advance Diploma in Information Technology":
+                window.location.href = "adit.html";
+                break;
+            default:
+                break;
+        }
+    }
+});
+</script>
     </main>
     <footer class="footer">
         <div class="container">
