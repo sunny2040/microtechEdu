@@ -1,0 +1,30 @@
+[
+  {
+    "ownerName": "SUNNY",
+    "instituteName": "SUNNY",
+    "dob": "12/01/1996",
+    "panNumber": "FDBPK0000D",
+    "aadharNumber": "909087876565",
+    "whatsappNumber": "8477826950",
+    "contactNumber": "1234567890",
+    "emailId": "sunny.kumar@gmail.com",
+    "address": "asdfgh,ytrewqregrdfg",
+    "state": "Delhi",
+    "district": "West Delhi",
+    "city": "gurgaon",
+    "pincode": "122018",
+    "ownerPhoto": "C:\\fakepath\\Sunnyk_.docx",
+    "computerLab": "1",
+    "theoryRoom": "11",
+    "classRooms": "111",
+    "totalComputers": "1234",
+    "practicalRoom": "12343",
+    "qualification": "Bachlore",
+    "reception": "Sun",
+    "staffRoom": "Yes",
+    "waterSupply": "Available",
+    "toilet": "Available",
+    "firstAid": "Available",
+    "password": "0987654321qwerty"
+  }
+]
