@@ -296,6 +296,59 @@
         height: auto;
     }
 </style>
+<style>
+    /* Franchise Dropdown */
+    .main-nav li {
+        position: relative;
+    }
+    
+    /* Links within the list items */
+    .main-nav a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #f9f9f9;
+    }
+    
+    /* Styling the dropdown menu */
+    .main-nav .has-dropdown .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #f9f9f9;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        min-width: 200px;
+        z-index: 1000;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+    }
+    
+    .main-nav .dropdown li {
+        width: 100%;
+    }
+    .main-nav .dropdown a {
+        padding: 10px 15px;
+        white-space: nowrap;
+        color: #000;
+    }
+    
+    .main-nav .dropdown a:hover {
+        background: #f5f5f5;
+    }
+    
+    .main-nav a:hover {
+        background: #555555;
+    }
+    
+        </style>
     
 </head>
 <body>
@@ -330,7 +383,13 @@
                     <li><a href="course.html">COURSES</a></li>
                     <li><a href="#">STUDENT ZONE</a></li>
                     <li><a href="#">MEDIA</a></li>
-                    <li><a href="franchiselist.html">FRANCHISE</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">FRANCHISE</a>
+                        <ul class="dropdown">
+                            <li><a href="franchiselist.html">Authorized Franchise</a></li>
+                            <li><a href="franchiseform.html">Apply for Franchise (Form)</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">CONTACT US</a></li>
                 </ul>
             </nav>
@@ -368,9 +427,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 pl-md-5 ftco-animate">
-                        <h2 class="mb-4">MICRO-TECH INSTITUTE OF EDUCATION</h2>
-                        <p>"Microtech -Institute of education is called “microtech” micro-tech is value name of MICRO-TEACH. The mission is started since 2023, four youth employment this mission has about 100 associated learning centres countrywide and this number is increasing every day. Microtech institute is the biggest educational which provides a great platform in IT sector in India sub -continent it is an ISO 9001 and 2015 certified company having mission to promote IT education and awareness to produce a story plinth to construct their future ans carrier .IT is an independent to cater to the basic needs in computer education".</p>
-                        <p> "It is a matter of great proud and pleasers that our country is a fast developing Country Inn economy, education.Since technology etc. India is a large population which needs to enhance human capital in development country. in a study is conducted by World Bank it has been found that the rule of human capital in development is far more important than physical capital for India. it has been essential that across to at least 25% of the relevant age Group between 17 to 23 in higher education it necessary to ensure development on a par with the needs of the day Microtech Institute of education autonomous organisation Reg.ByGovt of Bihar under the companies Act,2013 Ministry of corporate affairs,Govt, of India An  ISO 9001 :2015 certificate companies In this context micro -teach Institute of education unit at a programme to provide.it it education on various grade and courses to the people of India sub -continent our organisation is committeal and dedicated to achieve goal in mention a learner focus in providing accessible and quality education to directly prepare our student for further study,or Carrier in the IT and business goal economics.</p>
+                        <h4 class="mb-4">MICRO-TECH INSTITUTE OF EDUCATION</h4>
+                        <h6 ><p>"Microtech -Institute of education is called “microtech” micro-tech is value name of MICRO-TEACH. The mission is started since 2023, four youth employment this mission has about 100 associated learning centres countrywide and this number is increasing every day. Microtech institute is the biggest educational which provides a great platform in IT sector in India sub -continent it is an ISO 9001 and 2015 certified company having mission to promote IT education and awareness to produce a story plinth to construct their future ans carrier .IT is an independent to cater to the basic needs in computer education".</p>
+                            <p> "It is a matter of great proud and pleasers that our country is a fast developing Country Inn economy, education.Since technology etc. India is a large population which needs to enhance human capital in development country. in a study is conducted by World Bank it has been found that the rule of human capital in development is far more important than physical capital for India. it has been essential that across to at least 25% of the relevant age Group between 17 to 23 in higher education it necessary to ensure development on a par with the needs of the day Microtech Institute of education autonomous organisation Reg.ByGovt of Bihar under the companies Act,2013 Ministry of corporate affairs,Govt, of India An  ISO 9001 :2015 certificate companies In this context micro -teach Institute of education unit at a programme to provide.it it education on various grade and courses to the people of India sub -continent our organisation is committeal and dedicated to achieve goal in mention a learner focus in providing accessible and quality education to directly prepare our student for further study,or Carrier in the IT and business goal economics.</p></h6>
                     </div>
                 </div>
             </div>

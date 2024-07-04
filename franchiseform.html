@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-Tech Institute Of Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="path/to/owl.carousel.min.css">
+    <link rel="stylesheet" href="path/to/owl.theme.default.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-5s/SeZWsQ3MTZt+s1KUdfp0fCoZ2B0a5W3txdSzv4z4K9/x+QI5cJ+6S/N8N7WcxUDZX5jHjC4dF/lzT3K6N7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Additional CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+        .course-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Larger shadow on hover */
+        }
+        .course-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%; /* Circular format */
+            margin: 0 auto 10px; /* Center image and add bottom margin */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Light shadow for image */
+        }
+        .course-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333; /* Dark text color */
+        }
+        .course-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666; /* Slightly lighter text color */
+        }
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns grid */
+            gap: 20px; /* Spacing between cards */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .courses-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+        @media (max-width: 1200px) {
+            .courses-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+            }
+        }
+        @media (max-width: 900px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on even smaller screens */
+            }
+        }
+        @media (max-width: 600px) {
+            .courses-container {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
+            .course-card {
+                padding: 15px;
+            }
+            .course-card img {
+                width: 50px;
+                height: 50px;
+            }
+            .course-card h3 {
+                font-size: 14px;
+            }
+            .course-card p {
+                font-size: 12px;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color, adjust as needed */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Space between cards and button */
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        /* Counter Section Styles */
+        .counter-section {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 200px; /* Adjust card width */
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .counter-item h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .counter-item p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+
+        .counter-item i {
+            margin-left: 5px; /* Adjust spacing between count and icon */
+            color: #007bff; /* Adjust icon color */
+        }
+    </style>
+    <style>
+        .bg-yellow {
+            background-color: rgb(205, 234, 233); /* You can adjust the shade of yellow if needed */
+            padding: 20px; /* Adjust padding as per your design */
+        }
+        
+        .bg-yellow .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .bg-yellow .course-card {
+            background-color: #ffffff; /* White background for each card */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px; /* Adjust width as per your design */
+        }
+        
+        .bg-yellow h2 {
+            color: #333333; /* Dark text color */
+            text-align: center;
+        }
+        
+        .bg-yellow .btn-primary {
+            background-color: #333333; /* Dark background color for the button */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .bg-yellow .btn-primary:hover {
+            background-color: #555555; /* Darker background color on hover */
+        }
+    </style>
+
+<style>
+    .bg-light-blue {
+        background-color: #e0f7fa; /* Light blue background color */
+        padding: 20px; /* Adjust padding as per your design */
+    }
+    
+    .bg-light-blue .courses-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .bg-light-blue .course-card {
+        background-color: #ffffff; /* White background for each card */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 250px; /* Adjust width as per your design */
+    }
+    
+    .bg-light-blue h2 {
+        color: #333333; /* Dark text color */
+        text-align: center;
+    }
+    
+    .bg-light-blue .btn-primary {
+        background-color: #333333; /* Dark background color for the button */
+        color: #ffffff; /* White text color */
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    .bg-light-blue .btn-primary:hover {
+        background-color: #555555; /* Darker background color on hover */
+    }
+</style>
+
+<style>
+    .footer {
+        background-color: #333333;
+        color: #ffffff;
+        padding: 30px 0;
+    }
+    .footer h3 {
+        color: #ffffff;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .footer-links {
+        list-style-type: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+    address {
+        color: #ffffff;
+        font-style: normal;
+        line-height: 1.6;
+    }
+</style>
+
+<style>
+    .hero-wrap {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        min-height: 300px; /* Adjust this value based on the desired minimum height */
+    }
+    .hero-wrap img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<style>
+    /* Franchise Dropdown */
+    .main-nav li {
+        position: relative;
+    }
+    
+    /* Links within the list items */
+    .main-nav a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #f9f9f9;
+    }
+    
+    /* Styling the dropdown menu */
+    .main-nav .has-dropdown .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #f9f9f9;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        min-width: 200px;
+        z-index: 1000;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+    }
+    
+    .main-nav .dropdown li {
+        width: 100%;
+    }
+    .main-nav .dropdown a {
+        padding: 10px 15px;
+        white-space: nowrap;
+        color: #000;
+    }
+    
+    .main-nav .dropdown a:hover {
+        background: #f5f5f5;
+    }
+    
+    .main-nav a:hover {
+        background: #555555;
+    }
+    
+        </style>
+</head>
+<body>
+    <header>
+        <!-- Sub-Nav Container -->
+        <div class="header-top">
+            <nav class="sub-nav-container">
+                <ul class="sub-nav">
+                    <li class="call-us">
+                        <img src="images/call-icon.png" alt="Call Icon" id="call-icon"> <!-- Replace with your call icon path -->
+                        <a href="tel:+9472650244">Call Us: 9472650244</a>
+                    </li>
+                    <div class="right-links">
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Online Verification</a></li>
+                        <li><a href="#">Branch Login</a></li>
+                        <li><a href="#">Branch Enquiry</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- Logo and Main Navigation Container -->
+        <div class="header-main">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/658e88cbd90fb.jpg" alt="Micro-Tech Institute Of Education Logo" id="logo">
+            </a>
+            <nav class="main-nav-container">
+                <ul class="main-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="course.html">COURSES</a></li>
+                    <li><a href="#">STUDENT ZONE</a></li>
+                    <li><a href="#">MEDIA</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">FRANCHISE</a>
+                        <ul class="dropdown">
+                            <li><a href="franchiselist.html">Authorized Franchise</a></li>
+                            <li><a href="franchiseform.html">Apply for Franchise (Form)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="slider">
+            <img src="images/658e88ff24874.jpg" class="slide active" alt="Slide 1">
+            <!-- <img src="images/edu2.jpg" class="slide" alt="Slide 2"> -->
+        </div>
+
+        <section class="ftco-section bg-yellow courses-section">
+            <div class="container mt-5">
+                <h2 class="mb-4">Franchisee Form</h2>
+                <form id="franchiseeForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ownerName">Institute Owner Name</label>
+                            <input type="text" class="form-control" id="ownerName" placeholder="Enter Institute Owner Name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="instituteName">Institute Name</label>
+                            <input type="text" class="form-control" id="instituteName" placeholder="Enter Institute Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="dob">Date of Birth</label>
+                            <input type="text" class="form-control" id="dob" placeholder="mm/dd/yyyy" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="panNumber">Pan Number</label>
+                            <input type="text" class="form-control" id="panNumber" placeholder="Enter Pan Number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="aadharNumber">Aadhar Number</label>
+                            <input type="text" class="form-control" id="aadharNumber" placeholder="Enter Aadhar Number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="whatsappNumber">Whatsapp Number</label>
+                            <input type="text" class="form-control" id="whatsappNumber" placeholder="Enter Whatsapp Number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="contactNumber">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter Mobile Number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="emailId">Email Id</label>
+                            <input type="email" class="form-control" id="emailId" placeholder="Enter Email Id" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Institute Full Address</label>
+                        <textarea class="form-control" id="address" rows="3" placeholder="Enter Institute Full Address" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="selectState">Select State</label>
+                            <select id="state" class="form-control" onchange="updateDistricts()" required>
+                                <option value="">--Select State--</option>
+                                <!-- Options will be populated dynamically using JavaScript -->
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="selectDistrict">Select District</label>
+                            <select id="district" class="form-control" required>
+                                <option value="">--Select District--</option>
+                                <!-- Options will be populated dynamically using JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" class="form-control" id="pincode" placeholder="Enter Pincode" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ownerPhoto">Owner Photo</label>
+                            <input type="file" class="form-control-file" id="ownerPhoto">
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="computerLab">Computer Lab</label>
+                            <input type="text" class="form-control" id="computerLab" placeholder="Enter Number of computer operators" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="theoryRoom">Theory Room (Area in sq.)</label>
+                            <input type="text" class="form-control" id="theoryRoom" placeholder="Enter Seat Capacity" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="classRooms">Number of Class Rooms</label>
+                            <input type="text" class="form-control" id="classRooms" placeholder="Enter Number of class rooms" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="totalComputers">Total Computers</label>
+                            <input type="text" class="form-control" id="totalComputers" placeholder="Enter Total Computers" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="practicalRoom">Practical Room/Lab Room (Space in sq.)</label>
+                            <input type="text" class="form-control" id="practicalRoom" placeholder="Enter Space of Computer Center" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qualification">Qualification of Institute Head</label>
+                        <input type="text" class="form-control" id="qualification" placeholder="Enter Qualification of institute head" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="reception">Reception</label>
+                            <input type="text" class="form-control" id="reception" placeholder="Enter Reception" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="staffRoom">Staff Room</label>
+                            <select id="staffRoom" class="form-control" required>
+                                <option selected>--Select--</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="waterSupply">Water Supply</label>
+                            <select id="waterSupply" class="form-control" required>
+                                <option selected>--Select--</option>
+                                <option>Available</option>
+                                <option>Not Available</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="toilet">Toilet</label>
+                            <select id="toilet" class="form-control" required>
+                                <option selected>--Select--</option>
+                                <option>Available</option>
+                                <option>Not Available</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstAid">First Aid</label>
+                        <select id="firstAid" class="form-control" required>
+                            <option selected>--Select--</option>
+                            <option>Available</option>
+                            <option>Not Available</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </section>
+        <script>
+            document.getElementById('franchiseeForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                // Collect form data
+                const formData = {
+                    ownerName: document.getElementById('ownerName').value,
+                    instituteName: document.getElementById('instituteName').value,
+                    dob: document.getElementById('dob').value,
+                    panNumber: document.getElementById('panNumber').value,
+                    aadharNumber: document.getElementById('aadharNumber').value,
+                    whatsappNumber: document.getElementById('whatsappNumber').value,
+                    contactNumber: document.getElementById('contactNumber').value,
+                    emailId: document.getElementById('emailId').value,
+                    address: document.getElementById('address').value,
+                    state: document.getElementById('state').value,
+                    district: document.getElementById('district').value,
+                    city: document.getElementById('city').value,
+                    pincode: document.getElementById('pincode').value,
+                    ownerPhoto: document.getElementById('ownerPhoto').value,
+                    computerLab: document.getElementById('computerLab').value,
+                    theoryRoom: document.getElementById('theoryRoom').value,
+                    classRooms: document.getElementById('classRooms').value,
+                    totalComputers: document.getElementById('totalComputers').value,
+                    practicalRoom: document.getElementById('practicalRoom').value,
+                    qualification: document.getElementById('qualification').value,
+                    reception: document.getElementById('reception').value,
+                    staffRoom: document.getElementById('staffRoom').value,
+                    waterSupply: document.getElementById('waterSupply').value,
+                    toilet: document.getElementById('toilet').value,
+                    firstAid: document.getElementById('firstAid').value,
+                    password: document.getElementById('password').value
+                };
+
+                // Send form data to server
+                try {
+                    const response = await fetch('http://localhost:5000/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        alert(data.message); // Show success message
+                    } else {
+                        alert('Error submitting form. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error submitting form. Please try again.');
+                }
+            });
+        </script>
+        <script>
+            const stateDistrictData = {
+                "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
+                "Andaman and Nicobar Islands": ["Nicobar", "North and Middle Andaman", "South Andaman"],
+                "Arunachal Pradesh": ["Tawang", "West Kameng", "East Kameng", "Papum Pare", "Kurung Kumey", "Kra Daadi", "Lower Subansiri", "Upper Subansiri", "West Siang", "East Siang", "Siang", "Upper Siang", "Lower Siang", "Lower Dibang Valley", "Upper Dibang Valley", "Anjaw", "Lohit", "Namsai", "Changlang", "Tirap", "Longding"],
+                "Assam": ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Dima Hasao", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup Metropolitan", "Kamrup", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
+                "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran (Motihari)", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur (Bhabua)", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger (Monghyr)", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia (Purnea)", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
+                "Chandigarh": ["Chandigarh"],
+                "Chhattisgarh": ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada (South Bastar)", "Dhamtari", "Durg", "Gariyaband", "Janjgir-Champa", "Jashpur", "Kabirdham (Kawardha)", "Kanker (North Bastar)", "Kondagaon", "Korba", "Korea (Koriya)", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"],
+                "Dadra and Nagar Haveli and Daman and Diu": ["Dadra & Nagar Haveli", "Daman", "Diu"],
+                "Delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"],
+                "Goa": ["North Goa", "South Goa"],
+                "Gujarat": ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha (Palanpur)", "Bharuch", "Bhavnagar", "Botad", "Chhota Udepur", "Dahod", "Dangs (Ahwa)", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kachchh", "Kheda (Nadiad)", "Mahisagar", "Mehsana", "Morbi", "Narmada (Rajpipla)", "Navsari", "Panchmahal (Godhra)", "Patan", "Porbandar", "Rajkot", "Sabarkantha (Himmatnagar)", "Surat", "Surendranagar", "Tapi (Vyara)", "Vadodara", "Valsad"],
+                "Haryana": ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurgaon", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Mewat", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
+                "Himachal Pradesh": ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul & Spiti", "Mandi", "Shimla", "Sirmaur (Sirmour)", "Solan", "Una"],
+                "Jharkhand": ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribag", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahebganj", "Seraikela-Kharsawan", "Simdega", "West Singhbhum"],
+                "Karnataka": ["Bagalkot", "Ballari (Bellary)", "Belagavi (Belgaum)", "Bengaluru (Bangalore) Rural", "Bengaluru (Bangalore) Urban", "Bidar", "Chamarajanagar", "Chikballapur", "Chikkamagaluru (Chikmagalur)", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kalaburagi (Gulbarga)", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysuru (Mysore)", "Raichur", "Ramanagara", "Shivamogga (Shimoga)", "Tumakuru (Tumkur)", "Udupi", "Uttara Kannada (Karwar)", "Vijayapura (Bijapur)", "Yadgir"],
+                "Kerala": ["Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"],
+                "Lakshadweep": ["Agatti", "Amini", "Andrott", "Bangaram", "Bitra", "Chetlat", "Kadmat", "Kalpeni", "Kavaratti", "Kiltan", "Minicoy"],
+                "Madhya Pradesh": ["Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"],
+                "Maharashtra": ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"],
+                "Manipur": ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"],
+                "Meghalaya": ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri-Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"],
+                "Mizoram": ["Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Saitual", "Serchhip"],
+                "Nagaland": ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"],
+                "Odisha": ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghapur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar (Keonjhar)", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur (Sonepur)", "Sundargarh"],
+                "Puducherry": ["Karaikal", "Mahe", "Puducherry", "Yanam"],
+                "Punjab": ["Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Ferozepur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sahibzada Ajit Singh Nagar (Mohali)", "Sangrur", "Shaheed Bhagat Singh Nagar (Nawanshahr)", "Sri Muktsar Sahib", "Tarn Taran"],
+                "Rajasthan": ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Sri Ganganagar", "Tonk", "Udaipur"],
+                "Sikkim": ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"],
+                "Tamil Nadu": ["Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kancheepuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"],
+                "Telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad", "Mahabubabad", "Mahabubnagar", "Mancherial", "Medak", "Medchal–Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
+                "Tripura": ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"],
+                "Uttar Pradesh": ["Agra", "Aligarh", "Ambedkar Nagar", "Amethi (Chatrapati Sahuji Mahraj Nagar)", "Amroha (J.P. Nagar)", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur (Panchsheel Nagar)", "Hardoi", "Hathras (Mahamaya Nagar)", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj (Kanshi Ram Nagar)", "Kaushambi", "Kushinagar (Padrauna)", "Lakhimpur - Kheri", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj (Allahabad)", "Raebareli", "Rampur", "Saharanpur", "Sambhal (Bhim Nagar)", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"],
+                "Uttarakhand": ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar", "Uttarkashi"],
+                "West Bengal": ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur (South Dinajpur)", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Medinipur (West Medinipur)", "Paschim Bardhaman (West Bardhaman)", "Purba Bardhaman (East Bardhaman)", "Purba Medinipur (East Medinipur)", "Purulia", "South 24 Parganas", "Uttar Dinajpur (North Dinajpur)"],
+            };
+        
+            // Populate states dropdown
+            const stateSelect = document.getElementById('state');
+            for (const state in stateDistrictData) {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            }
+        
+            // Update districts dropdown based on selected state
+            function updateDistricts() {
+                const districtSelect = document.getElementById('district');
+                districtSelect.innerHTML = '<option value="">--Select District--</option>';
+                const selectedState = stateSelect.value;
+                if (selectedState && stateDistrictData[selectedState]) {
+                    stateDistrictData[selectedState].forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    });
+                }
+            }
+        </script>
+        
+        <!-- WhatsApp Chat Redirect Button -->
+        <div style="position: fixed; bottom: 20px; right: 20px;">
+            <a href="https://api.whatsapp.com/send?phone=9472650244" target="_blank" style="text-decoration: none;">
+                <img src="images/whatsapp.png" alt="WhatsApp Icon" width="50" height="50" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </a>
+        </div> 
+        
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>INFORMATION</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>STUDENT HELP</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>LOCATION</h3>
+                    <address>
+                        Address: Micro-Tech Institute Of Education Pvt. Ltd., Saraiya, Vill-Bakhra Po-Bakhra P/S Saraiya, Muzaffarpur - 843101<br>
+                        Phone: <a href="tel:+919472650244">9472650244</a><br>
+                        Phone: <a href="tel:+919472400672">9472400672</a><br>
+                        Email: <a href="mailto:info@microtechedu.com">info@microtechedu.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+  
+              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved. <i class="icon-heart" aria-hidden="true"></i> <a href="https://microtechedu.com/" target="_blank">MICRO-TECH INSTITUTE OF EDUCATION PVT. LTD.</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+          </div>
+    </footer>
+    
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/owl.carousel.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

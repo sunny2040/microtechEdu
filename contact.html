@@ -283,6 +283,60 @@
     }
     
 </style>
+
+<style>
+    /* Franchise Dropdown */
+    .main-nav li {
+        position: relative;
+    }
+    
+    /* Links within the list items */
+    .main-nav a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #f9f9f9;
+    }
+    
+    /* Styling the dropdown menu */
+    .main-nav .has-dropdown .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #f9f9f9;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        min-width: 200px;
+        z-index: 1000;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+    }
+    
+    .main-nav .dropdown li {
+        width: 100%;
+    }
+    .main-nav .dropdown a {
+        padding: 10px 15px;
+        white-space: nowrap;
+        color: #000;
+    }
+    
+    .main-nav .dropdown a:hover {
+        background: #f5f5f5;
+    }
+    
+    .main-nav a:hover {
+        background: #555555;
+    }
+    
+        </style>
     
 </head>
 <body>
@@ -317,7 +371,13 @@
                     <li><a href="course.html">COURSES</a></li>
                     <li><a href="#">STUDENT ZONE</a></li>
                     <li><a href="#">MEDIA</a></li>
-                    <li><a href="franchiselist.html">FRANCHISE</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">FRANCHISE</a>
+                        <ul class="dropdown">
+                            <li><a href="franchiselist.html">Authorized Franchise</a></li>
+                            <li><a href="franchiseform.html">Apply for Franchise (Form)</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">CONTACT US</a></li>
                 </ul>
             </nav>
