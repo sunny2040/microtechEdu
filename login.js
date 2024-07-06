@@ -56,7 +56,6 @@ async function login() {
         const hashedAdminPassword = "$2y$10$OKU7sn7Md4QPYU5GKqobROjJXVpCvpIDtE242mZBxRUwg5QNBd2Z2";
         
         if (username === adminUsername && await bcrypt.compare(password, hashedAdminPassword)) {
-            alert("Admin login successful!");
             window.location.href = "index.html";
         } else {
             alert("Invalid admin credentials!");
@@ -67,8 +66,7 @@ async function login() {
         let user = users.find(user => user.username === username);
 
         if (user && await bcrypt.compare(password, user.password)) {
-            alert("Student login successful!");
-            window.location.href = "index.html";
+            window.location.href = "studentIndex.html";
         } else {
             alert("Invalid student credentials!");
         }
