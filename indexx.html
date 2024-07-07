@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-Tech Institute Of Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="path/to/owl.carousel.min.css">
+    <link rel="stylesheet" href="path/to/owl.theme.default.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-5s/SeZWsQ3MTZt+s1KUdfp0fCoZ2B0a5W3txdSzv4z4K9/x+QI5cJ+6S/N8N7WcxUDZX5jHjC4dF/lzT3K6N7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Additional CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+        .course-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Larger shadow on hover */
+        }
+        .course-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%; /* Circular format */
+            margin: 0 auto 10px; /* Center image and add bottom margin */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Light shadow for image */
+        }
+        .course-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333; /* Dark text color */
+        }
+        .course-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666; /* Slightly lighter text color */
+        }
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns grid */
+            gap: 20px; /* Spacing between cards */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .courses-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+        @media (max-width: 1200px) {
+            .courses-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+            }
+        }
+        @media (max-width: 900px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on even smaller screens */
+            }
+        }
+        @media (max-width: 600px) {
+            .courses-container {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
+            .course-card {
+                padding: 15px;
+            }
+            .course-card img {
+                width: 50px;
+                height: 50px;
+            }
+            .course-card h3 {
+                font-size: 14px;
+            }
+            .course-card p {
+                font-size: 12px;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color, adjust as needed */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Space between cards and button */
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        /* Counter Section Styles */
+        .counter-section {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 200px; /* Adjust card width */
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .counter-item h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .counter-item p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+
+        .counter-item i {
+            margin-left: 5px; /* Adjust spacing between count and icon */
+            color: #007bff; /* Adjust icon color */
+        }
+    </style>
+    <style>
+        .bg-yellow {
+            background-color: yellow; /* You can adjust the shade of yellow if needed */
+            padding: 20px; /* Adjust padding as per your design */
+        }
+        
+        .bg-yellow .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .bg-yellow .course-card {
+            background-color: #ffffff; /* White background for each card */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px; /* Adjust width as per your design */
+        }
+        
+        .bg-yellow h2 {
+            color: #333333; /* Dark text color */
+            text-align: center;
+        }
+        
+        .bg-yellow .btn-primary {
+            background-color: #333333; /* Dark background color for the button */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .bg-yellow .btn-primary:hover {
+            background-color: #555555; /* Darker background color on hover */
+        }
+    </style>
+
+<style>
+    .bg-light-blue {
+        background-color: #e0f7fa; /* Light blue background color */
+        padding: 20px; /* Adjust padding as per your design */
+    }
+    
+    .bg-light-blue .courses-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .bg-light-blue .course-card {
+        background-color: #ffffff; /* White background for each card */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 250px; /* Adjust width as per your design */
+    }
+    
+    .bg-light-blue h2 {
+        color: #333333; /* Dark text color */
+        text-align: center;
+    }
+    
+    .bg-light-blue .btn-primary {
+        background-color: #333333; /* Dark background color for the button */
+        color: #ffffff; /* White text color */
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    .bg-light-blue .btn-primary:hover {
+        background-color: #555555; /* Darker background color on hover */
+    }
+</style>
+
+<style>
+    .footer {
+        background-color: #333333;
+        color: #ffffff;
+        padding: 30px 0;
+    }
+    .footer h3 {
+        color: #ffffff;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .footer-links {
+        list-style-type: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+    address {
+        color: #ffffff;
+        font-style: normal;
+        line-height: 1.6;
+    }
+</style>
+    <style>
+/* Franchise Dropdown */
+.main-nav li {
+    position: relative;
+}
+
+/* Links within the list items */
+.main-nav a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+/* Styling the dropdown menu */
+.main-nav .has-dropdown .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    z-index: 1000;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.main-nav .has-dropdown:hover .dropdown {
+    display: block;
+}
+
+.main-nav .dropdown li {
+    width: 100%;
+}
+.main-nav .dropdown a {
+    padding: 10px 15px;
+    white-space: nowrap;
+    color: #000;
+}
+
+.main-nav .dropdown a:hover {
+    background: #f5f5f5;
+}
+
+.main-nav a:hover {
+    background: #555555;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Sub-Nav Container -->
+        <div class="header-top">
+            <nav class="sub-nav-container">
+                <ul class="sub-nav">
+                    <li class="call-us">
+                        <img src="images/call-icon.png" alt="Call Icon" id="call-icon"> <!-- Replace with your call icon path -->
+                        <a href="tel:+9472650244">Call Us: 9472650244</a>
+                    </li>
+                    <div class="right-links">
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Online Verification</a></li>
+                        <li><a href="#">Branch Login</a></li>
+                        <li><a href="#">Branch Enquiry</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- Logo and Main Navigation Container -->
+        <div class="header-main">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/658e88cbd90fb.jpg" alt="Micro-Tech Institute Of Education Logo" id="logo">
+            </a>
+            <nav class="main-nav-container">
+                <ul class="main-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="course.html">COURSES</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">STUDENT ZONE</a>
+                        <ul class="dropdown">
+                            <li><a href="admission.html">Admission</a></li>
+                            <li><a href="admitcard.html">Admit Card</a></li>
+                            <li><a href="result.html">Result</a></li>
+                            <li><a href="certificate.html">Certificate</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">MEDIA</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">FRANCHISE</a>
+                        <ul class="dropdown">
+                            <li><a href="franchiselist.html">Authorized Franchise</a></li>
+                            <li><a href="franchiseform.html">Apply for Franchise (Form)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const dropdownToggles = document.querySelectorAll(".has-dropdown > a");
+                dropdownToggles.forEach(toggle => {
+                    toggle.addEventListener("click", function(event) {
+                        event.preventDefault();
+                        this.parentElement.classList.toggle("open");
+                    });
+                });
+            });
+        </script>
+            
+    </header>
+    <main>
+        <div class="slider">
+            <img src="images/658e8b4a5f859.jpg" class="slide active" alt="Slide 1">
+            <img src="images/658e8f6fa41cc.jpg" class="slide" alt="Slide 2">
+        </div>
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="marquee-container">
+                <marquee behavior="scroll" scrollamount="5" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    <div class="category-item">
+                        <a href="index.html">Welcome To Micro-Tech Institute Of Education  | </a>
+                    </div>
+                    <div class="category-item">
+                        <a href="#">All Centre Are Requested Start New Student Admission for Session 2023-2024  |</a>
+                    </div>
+                    <div class="category-item">
+                        <a href="#">All Centre Are Requested Start New Student Admission for Session 2023-2024 | </a>
+                    </div>
+                </marquee>
+            </div>
+        </section>
+        
+        <!-- Course Categories Section -->
+        <section class="ftco-section bg-light-blue courses-section">
+            <div class="container">
+                <h2 class="mb-4">COURSES CATEGORIES</h2>
+                <div class="courses-container">
+                    <!-- Course 1: CERTIFICATE IN COMPUTER APPLICATION -->
+                    <div class="course-card">
+                        <a href="cca.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/cca.jpg" alt="Certificate in Computer Application">
+                        </a>
+                        <h3><a href="cca.html">Certificate in Computer Application</a></h3>
+                    </div>
+                    <!-- Course 2: DIPLOMA IN COMPUTER APPLICATION -->
+                    <div class="course-card">
+                        <a href="dca.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/dca.jpg" alt="Diploma in Computer Application">
+                        </a>
+                        <h3><a href="dca.html">Diploma in Computer Application</a></h3>
+                    </div>
+                    <!-- Course 3: CERTIFICATE IN FINANCIAL ACCOUNTING -->
+                    <div class="course-card">
+                        <a href="cfa.html" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/cfa.jpg" alt="Certificate in Financial Accounting">
+                        </a>
+                        <h3><a href="cfa.html">Certificate in Financial Accounting</a></h3>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="course.html" class="btn btn-primary">View Course Categories</a>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!-- Counter Section -->
+        <section class="counter-section">
+            <div class="container">
+                <h2 class="section-title">VISITORS STATISTICS</h2>
+                <div class="form">
+                    <!-- Counter 1: OUR VISITORS -->
+                    <div class="counter-item">
+                        <h2><span id="visitors-count" data-target="100">0</span> <i class="fas fa-users"></i></h2>
+                        <p>OUR VISITORS</p>
+                    </div>
+                    <!-- Counter 2: OUR COURSES -->
+                    <div class="counter-item">
+                        <h2><span id="courses-count" data-target="10">0</span></h2>
+                        <p>OUR COURSES</p>
+                    </div>
+                    <!-- Counter 3: STUDENTS ENROLLED -->
+                    <div class="counter-item">
+                        <h2><span id="students-count" data-target="500">0</span></h2>
+                        <p>STUDENTS ENROLLED</p>
+                    </div>
+                    <!-- Counter 4: PERCENT CERTIFIED STUDENTS -->
+                    <div class="counter-item">
+                        <h2><span id="certified-count" data-target="85">0</span>%</h2>
+                        <p>PERCENT CERTIFIED STUDENTS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ftco-section bg-yellow courses-section">
+            <div class="container">
+                <h2 class="mb-4">BOARD OF ADVISORY MEMBER</h2>
+                <div class="courses-container">
+                    <div class="course-card">
+                        <a href="#" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/sandhya.jpeg" alt="Sandhya Kumar">
+                        </a>
+                        <h3><a href="#">SANDHYA KUMARI</a></h3>
+                        <p>MANAGING DIRECTOR</p>
+                    </div>
+                    <div class="course-card">
+                        <a href="#" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/amit.jpg" alt="Amit Kumar">
+                        </a>
+                        <h3><a href="#">AMIT KUMAR</a></h3>
+                        <p>ACCOUNTS & SALES</p>
+                    </div>
+                    <div class="course-card">
+                        <a href="#" class="img d-flex align-items-center justify-content-center">
+                            <img src="images/rohit.jpg" alt="Rohit Kumar">
+                        </a>
+                        <h3><a href="#">ROHIT KUMAR</a></h3>
+                        <p>COM. TEACHER</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">VIEW ALL ADVISORY MEMBER</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WhatsApp Chat Redirect Button -->
+        <div style="position: fixed; bottom: 20px; right: 20px;">
+            <a href="https://api.whatsapp.com/send?phone=9472650244" target="_blank" style="text-decoration: none;">
+                <img src="images/whatsapp.png" alt="WhatsApp Icon" width="50" height="50" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </a>
+        </div>        
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>INFORMATION</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>STUDENT HELP</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>LOCATION</h3>
+                    <address>
+                        Address: Micro-Tech Institute Of Education Pvt. Ltd., Saraiya, Vill-Bakhra Po-Bakhra P/S Saraiya, Muzaffarpur - 843101<br>
+                        Phone: <a href="tel:+919472650244">9472650244</a><br>
+                        Phone: <a href="tel:+919472400672">9472400672</a><br>
+                        Email: <a href="mailto:info@microtechedu.com">info@microtechedu.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+  
+              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved. <i class="icon-heart" aria-hidden="true"></i> <a href="https://microtechedu.com/" target="_blank">MICRO-TECH INSTITUTE OF EDUCATION PVT. LTD.</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+          </div>
+    </footer>
+    
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/owl.carousel.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to animate counting
+        function animateCount(element, start, end, duration) {
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(function() {
+                current += increment;
+                element.textContent = current;
+                if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                    clearInterval(timer);
+                    element.textContent = end;
+                }
+            }, stepTime);
+        }
+
+        // Start counting animations when the section is scrolled into view
+        function startCountersWhenVisible() {
+            let counters = document.querySelectorAll('.counter-item span');
+            let options = {
+                threshold: 0.7 
+            };
+            let observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Start counting animation for each counter item
+                        counters.forEach(counter => {
+                            let start = parseInt(counter.textContent) || 0; 
+                            let end = parseInt(counter.dataset.target);
+                            let duration = 2000;
+                            animateCount(counter, start, end, duration);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            // Observe each counter item
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        // Call the function when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', startCountersWhenVisible);
+    </script>
+</body>
+</html>
