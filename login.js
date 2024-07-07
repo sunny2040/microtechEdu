@@ -53,27 +53,35 @@ async function login() {
         // Admin credentials hardcoded
         const adminUsername = "admin";
         const adminPassword = "adminpassword";
-        const hashedAdminPassword = "$2y$10$OKU7sn7Md4QPYU5GKqobROjJXVpCvpIDtE242mZBxRUwg5QNBd2Z2";
+        const hashedAdminPassword = "$2y$10$OKU7sn7Md4QPYU5GKqobROjJXVpCvpIDtE242mZBxRUwg5QNBd2Z2"; // hashed "adminpassword"
         
         if (username === adminUsername && await bcrypt.compare(password, hashedAdminPassword)) {
-            alert("Center login successful!");
+            alert("Admin login successful!");
             window.location.href = "indexx.html";
         } else {
             alert("Invalid admin credentials!");
         }
     } else if (userType === "student") {
-        // Fetch students from localStorage
-        const adminUsername = "sunny010";
-        const adminPassword = "1234567890";
-        const hashedAdminPassword = "$2y$10$ttO4EwRIC0UbgaU/0n1eTe.JDJX/ArkXsqdayV0yKPlA4izzmZSV.";
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        let user = users.find(user => user.username === username);
-
-        if (user && await bcrypt.compare(password, user.password)) {
+        // Student credentials hardcoded
+        const studentUsername = "student";
+        const studentPassword = "studentpassword";
+        const hashedStudentPassword = "$2y$10$BbkcYJ0ShZ6uJuroURaTy.p324NkF2MIF8xJKLfQrn/LfKjz/aLNm"; // hashed "studentpassword"
+        
+        // Check hardcoded credentials first
+        if (username === studentUsername && await bcrypt.compare(password, hashedStudentPassword)) {
             alert("Student login successful!");
             window.location.href = "studentIndex.html";
         } else {
-            alert("Invalid student credentials!");
+            // Fetch students from localStorage
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let user = users.find(user => user.username === username);
+
+            if (user && await bcrypt.compare(password, user.password)) {
+                alert("Student login successful!");
+                window.location.href = "studentIndex.html";
+            } else {
+                alert("Invalid student credentials!");
+            }
         }
     }
 }
