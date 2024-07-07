@@ -63,6 +63,9 @@ async function login() {
         }
     } else if (userType === "student") {
         // Fetch students from localStorage
+        const adminUsername = "sunny010";
+        const adminPassword = "1234567890";
+        const hashedAdminPassword = "$2y$10$ttO4EwRIC0UbgaU/0n1eTe.JDJX/ArkXsqdayV0yKPlA4izzmZSV.";
         let users = JSON.parse(localStorage.getItem("users")) || [];
         let user = users.find(user => user.username === username);
 
