@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Certificate Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .certificate-details {
+            margin-bottom: 20px;
+        }
+
+        .certificate {
+            position: relative;
+            padding: 40px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            text-align: center;
+            background-image: url('images/certi.webp'); /* Optional background image for certificate */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .certificate h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .certificate p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .certificate .student-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px auto;
+            object-fit: cover;
+            border: 3px solid #333;
+        }
+
+        .certificate .details {
+            margin-top: 20px;
+        }
+
+        #download-btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Certificate Details</h1>
+        <div class="certificate-details">
+            <div class="certificate" id="certificate">
+                <h2>Certificate of Achievement</h2>
+                <img id="student-photo" class="student-photo" src="images/rohit.jpg" alt="Student Photo">
+                <div class="details">
+                    <p>This is to certify that</p>
+                    <p id="student-name"><strong>Student Name</strong></p>
+                    <p>has successfully completed the course</p>
+                    <p id="course-name"><strong>Course Name</strong></p>
+                    <p>on</p>
+                    <p id="completion-date"><strong>Date</strong></p>
+                    <br>
+                    <p><strong>Micro-Tech Institute Of Education</strong></p>
+                    <p><em>Sunny</em></p>
+                </div>
+            </div>
+        </div>
+        <button id="download-btn">Download Certificate</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="certificate.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admit Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .header .logo {
+            width: 100px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admit-card {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            text-align: left; /* Align text content to the left */
+            background-image: url('images/admit_card_background.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; /* Adjust layout to column */
+            justify-content: space-between; /* To align items vertically */
+            position: relative; /* Position relative for absolute positioning */
+        }
+
+        .admit-card h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .admit-card .details {
+            width: 100%; /* Adjust width as needed */
+            margin-top: 20px; /* Adjust margin as needed */
+        }
+
+        .admit-card .photo-container {
+            position: absolute;
+            top: 20px; /* Adjust top positioning */
+            right: 20px; /* Adjust right positioning */
+            text-align: right;
+        }
+
+        .admit-card img.student-photo {
+        width: 120px;
+        height: 150px;
+        border-radius: 10px; /* Keep a border-radius for rounded corners */
+        object-fit: cover; /* Cover the entire container */
+        border: 3px solid #333;
+        }
+
+        .admit-card p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        #download-btn {
+            width: 100%;
+            max-width: 300px; /* Limit width to ensure button stays within container */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="images/658e88cbd90fb.jpg" alt="Logo">
+            <!-- Replace "images/logo.png" with your actual logo path -->
+            <h1>Student Admit Card</h1>
+        </div>
+        <div class="admit-card">
+            <div class="details">
+                <h2>Admit Card</h2>
+                <p><strong>Name:</strong> Rohit</p>
+                <p><strong>Course:</strong> Advanced Web Development</p>
+                <p><strong>Exam Date:</strong> July 15, 2024</p>
+                <p><strong>Exam Time:</strong> 9:00 AM</p>
+                <p><strong>Exam Center:</strong> Micro-Tech Institute of Education, Room 201</p>
+                <p><strong>Instructions:</strong></p>
+                <ul>
+                    <li>Arrive 30 minutes before the exam.</li>
+                    <li>Bring your admit card and a valid ID proof.</li>
+                    <li>Electronic devices are not allowed in the exam hall.</li>
+                </ul>
+            </div>
+            <div class="photo-container">
+                <img class="student-photo" src="images/rohit.jpg" alt="Student Photo">
+            </div>
+        </div>
+        <button id="download-btn">Download Admit Card</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function () {
+            html2canvas(document.querySelector(".admit-card")).then(function(canvas) {
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "admit_card.png";
+                link.href = canvas.toDataURL("image/png");
+                link.target = '_blank';
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
