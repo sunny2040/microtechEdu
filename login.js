@@ -57,7 +57,7 @@ async function login() {
         
         if (username === adminUsername && await bcrypt.compare(password, hashedAdminPassword)) {
             alert("Admin login successful!");
-            window.location.href = "indexx.html";
+            window.location.href = "index.html";
         } else {
             alert("Invalid admin credentials!");
         }
